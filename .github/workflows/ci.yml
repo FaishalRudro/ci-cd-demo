@@ -12,8 +12,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Run Python app
+    - name: Install pytest
+      run: pip install pytest
+
+    - name: Run tests
+      run: pytest test_app.py -v
+
+    - name: Run app
       run: python app.py
 
     - name: Deploy
-      run: echo "Deploying app... Done!"
+      run: echo "All tests passed! Deploying..."
